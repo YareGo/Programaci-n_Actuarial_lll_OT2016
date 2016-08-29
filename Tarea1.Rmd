@@ -1,0 +1,44 @@
+---
+title: "Tarea1"
+author: "Yarely Gomez De Manuel"
+date: "29 de agosto de 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Primer semestre
+ 
+  * Matematicas Básicas  7.0
+  * Problemas de Matematicas Básicas 7.0
+  * Introducción a la profesión Actuarial 7.0
+  * DHPC 10.0
+  * Conceptos de Cálculo 7.0
+  
+## Segundo Semestre
+
+  * Teoria de Ecuaciones 8.0
+  * Cálculo Diferencial en una variable 9.0
+  * Teoria del Interés I 8.0
+  * Geometría Analítica 9.0
+  * Micoeconomía 8.0
+  
+## Tercer Semestre
+
+  * Contabilidad 10
+  * Cálculo Integral en una Variable 8.0
+  * Programación Actuarial I 7.0
+  * Macroeconomía 8.0
+  * Teoría del Interés II 8.0
+  
+##Cuarto Semestre
+  * Cálculo Diferencial en Var. Variables 9.0
+  * Programación Actuarial II 6.0
+  * Ecuaciones Diferenciales 10.0
+  * Álgebra Lineal 8.0
+  * Probabilidad 6.0
+  
+  
+  
