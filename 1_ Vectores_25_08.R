@@ -75,3 +75,90 @@ m<- matrix(nrow = 2,ncol = 3)
 m
 dim(m)
 atributes(m)
+#CAmbio de Dimensiones de2x3 a 3x2
+dim (m) <-c(3,2)
+m
+#Crear una matriz con datos
+m<-matrix(1:6,2,3)
+m
+
+m<-matrix(1:6,3,2)
+m
+class(m)
+str(m)
+
+dim(m)<-c(2,5)#Esto va a producir error
+
+x<-c(1,2,3)
+y<-c("a","b","c")
+z<-c(x,y)
+z
+
+m1<-rbind(m,x)
+m1
+
+m2<-cbind(m,x)
+m2
+
+rbind(m1,y)
+cbind(m2,y)
+
+#Factores
+x<-factor(c("si","no","si","si","no","si","no"))
+x
+table(x)
+unclass(x)
+x<-factor(c("si","no","si","si","no","si","no"),levels = c("si","no"))
+
+z<-factor(c("azul","azul","rojo","azul","amarillo","verde","azul"))
+x
+table(x)
+
+#Valores Faltantes
+x<-c(1,2,Na,10,3)
+is.na(x)
+is.nan(x)
+
+x<-c(1,2,NaN,10,3)
+is.na(x)
+is.nan(x)
+
+#Data Frames
+x<-data.frame(Erick= 1:4,Lori=c(T,T,F,F))
+row.names(x)<-c("Primero","segundo","tercero","cuarto")
+x
+nrow(x)
+ncol(x)
+attributes(x)
+names(x)<-c("Yarely","Karen")
+x
+
+#Los nombres no son exclusivos de los data frames
+x<-1:3
+names(x) #NULL
+names(x)<-c("Hugo","Paco","Luis")
+x
+
+x<-list(a=1:10,b=100:91,c=51:60)
+x
+names(x)<-c("Seq1","SEQ2","sEq3")
+x
+
+
+m<-matrix(1:4,2,2)
+m
+attributes(m)
+dimnames(m)<-list(c("fil1","fil2"),c("col1","col2"))
+m
+
+e<-matrix(NA,5,6)
+e
+dimnames(e)<-list(c(1:5),c("a","b","c","d","e","f"))
+e
+
+#Lectura de Datos
+getwd()
+setwd("~/GitHub/Programacion_Actuarial_lll_OT2016")
+data<-read.csv("datos s&p.csv")
+data<-read.table("datos s&p.csv","T",",")
+data
