@@ -51,6 +51,11 @@ class(y)
 
 #coercion explicita
 z<-0:6
+
+
+
+
+
 class(z)
 as.numeric(z)
 as.logical(z)
@@ -160,5 +165,27 @@ e
 getwd()
 setwd("~/GitHub/Programacion_Actuarial_lll_OT2016")
 data<-read.csv("datos s&p.csv")
-data<-read.table("datos s&p.csv","T",",")
+data<-read.table("datos s&p.csv",T,",",nrows = 100)
+clases<-sapply(data, class)
+data<-read.table("datos s&P.csv",T,",",colclasses =clases)
 data
+
+#uso de dput y dget
+y<-data.frame(a=1,b="a")
+dput(y)
+dput(y,file="y.R")
+nueva.y<-dget("y.R")
+y
+nueva.y ######No sale
+
+x<-"Programación actuarial III"
+y<-data.frame(a=1,b="a")
+dump(c("x","y"),file = "data.R")
+rm(x,y)
+source("data.R")
+
+#Archivo de airquality
+airquality<-data.frame(a=1,b="a")
+dput(airquality)
+dput(airquality,file="airquality.R")
+airquality
