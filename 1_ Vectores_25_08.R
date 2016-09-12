@@ -189,3 +189,97 @@ airquality<-data.frame(a=1,b="a")
 dput(airquality)
 dput(airquality,file="airquality.R")
 airquality
+
+#creamos un vector
+x<-c("a","b","c","d","e")
+#veamos el vector
+x
+#extraemos elementos con []
+x[1]
+x[2]
+#también podemos extraer una secuencia de elementos
+x[1:4]
+#es poible extraer los elementos que cumplen una restricción
+x[x>"b"]
+#de manera equivalente se puede obtener un vector lógico
+u<-x=="c"
+u
+x[u]
+
+#creamos una lista
+x<-list(foo=1:4,bar=0.6)
+#extraemos el primer elemento de la lista
+#este elemento es una lista que contiene una secuencia
+x[1]
+#extraemos nuevamente el primer elemento de la lista
+#ahora el elemento es la secuencia en si
+x[[1]]
+#extraemos un elemento por nombre
+x$bar
+x[["bar"]]
+x["bar"]
+
+#creamos una lista de 3 elementos
+x<-list(foo=1:4,bar=0.6,baz="Hola")
+#Extraemos el primer y tecer elemento de la lista
+x[c(1,3)]
+x[[c(1,3)]]
+
+#subconjuntos de listas
+x<-list(foo=1:4,bar=0.6,baz="Hola")
+name<-"foo"
+x[[name]]
+x$name
+x$foo
+
+#se pueden extraer elementos de los elementos extraídos
+x<-list(a=list(10,12,14),b=list(3.14,2.81))
+x[[c(1,3)]]
+x[[1]][[3]]#la extración de un conjunto, es el conjunto de las extraciones
+x[[c(2,1)]]
+#ej. extra
+x[[1]][3]
+
+x<-matrix(1:6,2,3)
+x
+#El resultado es un vector
+x[1,2]
+#con drop=FALSE,se mantiene la dimensión y
+#el resultado será una matriz
+x[1,2,drop=FALSE]
+#si dejamos solamente el espacio, el resultado será un vector
+x[1,]
+#si usamos drop=FALSE, el resultado será una matriz
+x[1, ,drop=FALSE]
+##
+x[2,1]
+x[1,]
+x[,2]
+
+#también se puede encontrar el nombre de algunos objetos de manera parcial con $
+x<-list(aardvark=1:5)
+x$a
+x[["a"]]
+x[["a",exact=FALSE]]
+
+airquality[1:6,]
+completos<-complete.cases(airquality)
+completos
+airquality[completos,][1:6,]
+airquality[1:6,][completos,]
+
+
+x<-1:4;y<-6:9
+x
+y
+x+y
+x>2
+x>=2
+y==8
+x*y
+x/y
+
+x<-matrix(1:4,2,2);y<-matrix(rep(10,4),2,2)
+x*y
+x/y
+x%*%y #multiplicación de matrices
