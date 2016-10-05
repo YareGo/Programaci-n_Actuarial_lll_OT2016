@@ -26,7 +26,6 @@ corr<-function(directorio,horizonte){
       
      }
   }
-  id
   lili<-length(id)
   for (i in 1:lili){
       me<-paste(directorio,id[i],sep="/")
