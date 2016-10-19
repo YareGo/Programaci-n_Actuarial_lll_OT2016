@@ -1,5 +1,4 @@
-mejor <- function(estado, resultado) {
-    setwd("~/GitHub/Programacion_Actuarial_lll_OT2016/Caso 2/Calidad de Hospitales - data")
+rankhospital <- function(estado, resultado, num) {
     outcome <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
     hospital <- vector("numeric")
     mor <- vector("numeric")
@@ -15,11 +14,11 @@ mejor <- function(estado, resultado) {
         columna <- 2
     }
     
-    if (columna>5) {
+    if (columna>5){
         h1 <- 0
         for (j in 1:renglones) {
             if (outcome[j,7] == estado) {
-                h1 <- length(hospital) + 1
+                h1 <- length(hospital)+ 1
                 length(hospital) <- h1
                 length(mor) <- h1
                 hospital[h1] <- outcome[j,2]
@@ -34,7 +33,15 @@ mejor <- function(estado, resultado) {
             options(warn = oldw)
             x <- data.frame(hospital,v,stringsAsFactors = FALSE)
             y <- x[order(v,hospital),]
-            y[1,1]
+            
+            if (num == "mejor") {
+                y[1,1]
+            } else if (num == "peor") {
+                last <- nrow(y[complete.cases(y),])
+                y[last,1]
+            } else {
+                y[num,1]
+            }
         } else {
             stop("Estado inválido")
         }
@@ -42,6 +49,3 @@ mejor <- function(estado, resultado) {
         stop("Resultado inválido")
     }
 }
-
-
-
