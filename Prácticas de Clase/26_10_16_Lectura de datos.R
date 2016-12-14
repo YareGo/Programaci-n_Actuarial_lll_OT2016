@@ -74,3 +74,41 @@ DT
 set.seed(123)
 DT<-data.table(x=sample(letters[1:3],1E5,TRUE))#1E5=10^5,TRUE sig. que se va a hacer con reemplazo
 DT[,.N,by=x]
+
+DT<-data.table(x=rep(letters[1:3],each=100),
+y=rnorm(300))
+setkey(DT,x)
+DT['a']
+
+##lectura rápida
+DT1<-data.table(x=c('a','a','b','dt1'),y=1:4)
+DT2<-data.table(x=c('a','b','dt2'),z=5:7)
+setkey(DT1,x);setkey(DT2,x)
+merge(DT1,DT2)
+
+set.seed(1)
+df_gde<-data.frame(x=rnorm(1E6),y=rnorm(1E6))
+file<-tempfile()
+write.table(df_gde,file=file,row.names = F,col.names = T,sep="\t",quote = F)
+system.time(fread(file))#fast read
+system.time(read.table(file,header=T,sep = "\t"))
+
+##Conexiones y listados
+install.packages("RMySQL")
+library("RMySQL")
+ucscDb<-dbConnect(MySQL(),user="genome",host="genome-mysql.cse.ucsc.edu")
+result<-dbGetQuery(ucscDb,"show databases;");dbDisconnect(ucscDb);
+result
+
+##Conectar a hg19 y listado de tablas
+hg19<-dbConnect(MySQL(),user="genome",db="hg19",
+                host="genome-mysql.cse.ucsc.edu")
+tablas<-dbListTables(hg19)
+length(tablas)
+tablas[1:3]
+
+##Obtener dimensiones de una tabla en especifico
+dbListFields(hg19,"affyU133Plus2")
+
+dbDisconnect(hg19)#para desconectar
+               
